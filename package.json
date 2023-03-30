@@ -1,0 +1,52 @@
+{
+  "name": "@ethin/colorconv",
+  "version": "1.0.0",
+  "description": "Convert hex, rgb, and hsl from one to another from the command line",
+  "main": "src/index.js",
+  "bin": {
+    "convert-color": "../src/cli.js"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "files": [
+    "cli.js",
+    "convertColor.js"
+  ],
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "colorconv",
+    "color",
+    "cli-app",
+    "converter",
+    "hex",
+    "rgb",
+    "convert",
+    "conversion"
+  ],
+  "author": "Etienne Girard",
+  "license": "MIT",
+  "dependencies": {
+    "ansi-colors": "^4.1.3",
+    "arg": "^5.0.2",
+    "chalk": "^4.1.2",
+    "clipboardy": "^3.0.0",
+    "convert-color-js": "^1.0.0",
+    "enquirer": "^2.3.6",
+    "esm": "^3.2.25",
+    "execa": "^7.1.1",
+    "import-meta-resolve": "^2.2.2",
+    "inquirer": "^8.2.5",
+    "listr": "^0.14.3",
+    "meow": "^11.0.0",
+    "ncp": "^2.0.0",
+    "pkg-install": "^1.0.0"
+  }
+}
