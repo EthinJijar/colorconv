@@ -1,8 +1,10 @@
 #!/bin/env node
 import converter from "convert-color-js";
-import convertColor from "../src/convertColor";
+import { Command } from "commander";
+import clipboardy from "clipboardy";
+import c from "ansi-colors";
 
-require("../src/cli").cli(process.argv);
+const program = new Command();
 
 program.usage("[options] <subcommand> ...");
 program
@@ -12,39 +14,111 @@ program
   .argument("[newFormat]", "format to convert to")
   .action((color, newFormat) => {
     if (converter.isRgb(color)) {
-      converter.convert(color, newFormat);
+      clipboardy.writeSync(converter.convert(color, newFormat));
+      console.log(
+        c.green(
+          `Converted value is ${converter.convert(
+            color,
+            newFormat
+          )}. It has been copied to your clipboard.`
+        )
+      );
+    }
+  });
+
+program
+  .command("rgba")
+  .description("Convert a Color to another Format")
+  .argument("<color>", "color to convert")
+  .argument("[newFormat]", "format to convert to")
+  .action((color, newFormat) => {
+    if (converter.isRgba(color)) {
+      clipboardy.writeSync(converter.convert(color, newFormat));
+      console.log(
+        c.green(
+          `Converted value is ${converter.convert(
+            color,
+            newFormat
+          )}. It has been copied to your clipboard.`
+        )
+      );
+    }
+  });
+
+program
+  .command("hex")
+  .description("Convert a Color to another Format")
+  .argument("<color>", "color to convert")
+  .argument("[newFormat]", "format to convert to")
+  .action((color, newFormat) => {
+    if (converter.isHex(color)) {
+      clipboardy.writeSync(converter.convert(color, newFormat));
+      console.log(
+        c.green(
+          `Converted value is ${converter.convert(
+            color,
+            newFormat
+          )}. It has been copied to your clipboard.`
+        )
+      );
+    }
+  });
+
+program
+  .command("hexa")
+  .description("Convert a Color to another Format")
+  .argument("<color>", "color to convert")
+  .argument("[newFormat]", "format to convert to")
+  .action((color, newFormat) => {
+    if (converter.isHexa(color)) {
+      clipboardy.writeSync(converter.convert(color, newFormat));
+      console.log(
+        c.green(
+          `Converted value is ${converter.convert(
+            color,
+            newFormat
+          )}. It has been copied to your clipboard.`
+        )
+      );
+    }
+  });
+
+program
+  .command("hsl")
+  .description("Convert a Color to another Format")
+  .argument("<color>", "color to convert")
+  .argument("[newFormat]", "format to convert to")
+  .action((color, newFormat) => {
+    if (converter.isHsl(color)) {
+      clipboardy.writeSync(converter.convert(color, newFormat));
+      console.log(
+        c.green(
+          `Converted value is ${converter.convert(
+            color,
+            newFormat
+          )}. It has been copied to your clipboard.`
+        )
+      );
+    }
+  });
+
+program
+  .command("hsla")
+  .description("Convert a Color to another Format")
+  .argument("<color>", "color to convert")
+  .argument("[newFormat]", "format to convert to")
+  .action((color, newFormat) => {
+    if (converter.isHsla(color)) {
+      clipboardy.writeSync(converter.convert(color, newFormat));
+      console.log(
+        c.green(
+          `Converted value is ${converter.convert(
+            color,
+            newFormat
+          )}. It has been copied to your clipboard.`
+        )
+      );
     }
   });
 
 program.parse(process.argv);
-
-// .option("--rgba")
-// .on("--rgba", function (initialColor) {
-//   if (converter.isRgba(initialColor)) {
-//     convertColor(initialColor);
-//   }
-// })
-// .option("--hex")
-// .on("--hex", function (initialColor) {
-//   if (converter.isHex(initialColor)) {
-//     convertColor(initialColor);
-//   }
-// })
-// .option("--hexa")
-// .on("--hexa", function (initialColor) {
-//   if (converter.isHexa(initialColor)) {
-//     convertColor(initialColor);
-//   }
-// })
-// .option("--hsl")
-// .on("--hsl", function (initialColor) {
-//   if (converter.isHsl(initialColor)) {
-//     convertColor(initialColor);
-//   }
-// })
-// .option("--hsla")
-// .on("--hsla", function (initialColor) {
-//   if (converter.isHsla(initialColor)) {
-//     convertColor(initialColor);
-//   }
-// })
